@@ -10,8 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.4",
     "nodemon": "^1.18.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarasyakubiv/bepc-back.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tarasyakubiv/bepc-back/issues"
+  },
+  "homepage": "https://github.com/tarasyakubiv/bepc-back#readme"
 }
