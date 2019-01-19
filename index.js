@@ -1,12 +1,12 @@
-let express = require('express')
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const bodyParser = require('body-parser');
+const server = require('http').createServer(app);
+const socket = require('socket.io');
+const io = socket(server);
 
-let bodyParser = require('body-parser');
-
-let mongoose = require('mongoose');
-
-let app = express()
-
-let cors = require('cors')
+const mongoose = require('mongoose');
 
 let apiRoutes = require("./api-routes")
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -24,11 +24,16 @@ var db = mongoose.connection;
 
 var port = process.env.PORT || 8080
 
-app.get('/', (req, res) => res.send('Hello World With Express'))
+io.on('connection', (socket) => {
+
+    socket.on('NEW_CHANGE', function(data){
+        io.emit('REFRESH', data);
+    })
+});
 
 app.use('/api', apiRoutes);
 
-app.listen(port, function () {
+server.listen(port, function () {
     console.log("Running Tree View on port " + port)
 })
 
