@@ -21,7 +21,7 @@ function validateChildCount(childCount) {
 }
 
 function validateBounds(lower, upper) {
-    if(lower >= upper) {
+    if(lower > upper) {
         throw "Incorrect Bounds assignment!"
     }
 }

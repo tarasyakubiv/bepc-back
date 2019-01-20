@@ -18,7 +18,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/treeview')
+mongoose.connect('mongodb://tarasyakubiv:passport19@ds161794.mlab.com:61794/factory-tree')
 
 var db = mongoose.connection;
 
