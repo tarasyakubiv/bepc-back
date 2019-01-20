@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 });
 
 // Import Factory controller
-var factoryController = require('./factoryController');
+var factoryController = require('../controller/factoryController');
 
 //Factory routes
 router.route('/factories')
