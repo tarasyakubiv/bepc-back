@@ -20,7 +20,17 @@ function validateChildCount(childCount) {
     return childCount;
 }
 
+function validateName(name) {
+    if(name === undefined || name.length === 0) {
+        throw "Factory needs a name!"
+    }
+    return name
+}
+
 function validateBounds(lower, upper) {
+    if(isNaN(lower) || isNaN(upper)) {
+        throw "Bounds must be Number!"
+    }
     if(lower > upper) {
         throw "Incorrect Bounds assignment!"
     }
@@ -46,7 +56,7 @@ exports.index = function (req, res) {
 // Handle create factory actions
 exports.new = function (req, res) {
     var factory = new Factory();
-    factory.name = req.body.name;
+    factory.name = validateName(req.body.name);
     factory.childCount = validateChildCount(req.body.childCount);
     factory.randomLowerBound = req.body.randomLowerBound;
     factory.randomUpperBound = req.body.randomUpperBound;
