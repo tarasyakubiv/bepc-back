@@ -23,8 +23,6 @@ mongoose.connect(config.DBHost, { useNewUrlParser: true })
 
 var port = process.env.PORT || 8080
 
-io.origins('*:*');
-
 io.on('connection', (socket) => {
 
     socket.on('NEW_CHANGE', function(data){
